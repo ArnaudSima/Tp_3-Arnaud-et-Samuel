@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservations</title>
+    <link rel="stylesheet" href="/css/organisation.css"> <!-- Lien vers le fichier CSS -->
+</head>
+
+<body>
+    <!-- En-tête avec navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="reservations.html">Réservations</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="rapports.html">Rapports</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur pour les réservations -->
+    <div class="container">
+        <h1>Réserver une séance</h1> <!-- Titre principal -->
+
+        <!-- Formulaire pour réserver une séance -->
+        <form id="reservation-form">
+            <label for="name">Nom:</label> <!-- Nom du client -->
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Date:</label> <!-- Date de la séance -->
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Heure:</label> <!-- Heure de la séance -->
+            <input type="time" id="time" name="time" required>
+
+            <button type="submit">Réserver</button> <!-- Bouton pour envoyer le formulaire -->
+        </form>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 Gym. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
