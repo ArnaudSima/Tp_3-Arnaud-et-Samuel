@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes</title>
+    <link rel="stylesheet" href="/css/organisation.css"> <!-- Lien vers le fichier CSS -->
+</head>
+
+<body>
+    <!-- En-tête avec navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="reservations.html">Réservations</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="rapports.html">Rapports</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur pour les commandes -->
+    <div class="container">
+        <h1>Passer une commande</h1> <!-- Titre principal -->
+
+        <!-- Formulaire pour passer une commande -->
+        <form id="order-form">
+            <label for="product">Produit:</label> <!-- Nom du produit -->
+            <input type="text" id="product" name="product" required>
+
+            <label for="quantity">Quantité:</label> <!-- Quantité du produit -->
+            <input type="number" id="quantity" name="quantity" required>
+
+            <button type="submit">Commander</button> <!-- Bouton pour envoyer le formulaire -->
+        </form>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 Gym. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
