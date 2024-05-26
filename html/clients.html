@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
     <link rel="stylesheet" href="../css/organisation.css">
 </head>
@@ -14,7 +13,6 @@
                 <li><a href="reservations.html">Réservations</a></li>
                 <li><a href="commandes.html">Commandes</a></li>
                 <li><a href="clients.html">Clients</a></li>
-                <li><a href="rapports.html">Rapports</a></li>
             </ul>
         </nav>
     </header>
@@ -22,7 +20,7 @@
         <h1>Ajouter des clients</h1>
         <form id="client-form">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required>
+            <input type="number" id="id" name="id" required>
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
             <label for="prenom">Prénom:</label>
@@ -33,6 +31,8 @@
             <input type="text" id="adresse" name="adresse" required>
             <button type="submit">Ajouter</button>
         </form>
+        <h2>Liste des clients</h2>
+        <div id="clients-list"></div>
     </div>
     <footer>
         <p>&copy; 2024 Gym. Tous droits réservés.</p>

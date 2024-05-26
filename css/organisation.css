@@ -122,6 +122,7 @@ footer {
 footer p {
     margin: 0;
 }
+
 .report-item {
     display: flex;
     gap: 20px;

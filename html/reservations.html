@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservations</title>
     <link rel="stylesheet" href="../css/organisation.css">
 </head>
@@ -14,12 +13,11 @@
                 <li><a href="reservations.html">Réservations</a></li>
                 <li><a href="commandes.html">Commandes</a></li>
                 <li><a href="clients.html">Clients</a></li>
-                <li><a href="rapports.html">Rapports</a></li>
             </ul>
         </nav>
     </header>
     <div class="container">
-        <h1>Réserver une séance</h1>
+        <h1>Ajouter des réservations</h1>
         <form id="reservation-form">
             <label for="name">Nom:</label>
             <input type="text" id="name" name="name" required>
@@ -27,8 +25,10 @@
             <input type="date" id="date" name="date" required>
             <label for="time">Heure:</label>
             <input type="time" id="time" name="time" required>
-            <button type="submit">Réserver</button>
+            <button type="submit">Ajouter</button>
         </form>
+        <h2>Liste des réservations</h2>
+        <div id="reservations-list"></div>
     </div>
     <footer>
         <p>&copy; 2024 Gym. Tous droits réservés.</p>

@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commandes</title>
     <link rel="stylesheet" href="../css/organisation.css">
 </head>
@@ -14,19 +13,20 @@
                 <li><a href="reservations.html">Réservations</a></li>
                 <li><a href="commandes.html">Commandes</a></li>
                 <li><a href="clients.html">Clients</a></li>
-                <li><a href="rapports.html">Rapports</a></li>
             </ul>
         </nav>
     </header>
     <div class="container">
-        <h1>Passer une commande</h1>
+        <h1>Ajouter des commandes</h1>
         <form id="order-form">
             <label for="product">Produit:</label>
             <input type="text" id="product" name="product" required>
             <label for="quantity">Quantité:</label>
             <input type="number" id="quantity" name="quantity" required>
-            <button type="submit">Commander</button>
+            <button type="submit">Ajouter</button>
         </form>
+        <h2>Liste des commandes</h2>
+        <div id="orders-list"></div>
     </div>
     <footer>
         <p>&copy; 2024 Gym. Tous droits réservés.</p>
