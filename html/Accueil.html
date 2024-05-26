@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="/css/organisation.css"> <!-- Lien vers le fichier CSS -->
+    <title>Rapports</title>
+    <link rel="stylesheet" href="../css/organisation.css">
 </head>
-
 <body>
-    <!-- En-tête avec navigation -->
     <header>
         <nav>
             <ul>
-                <li><a href="accueil.html">Accueil</a></li> <!-- Lien vers la page d'accueil -->
-                <li><a href="reservations.html">Réservations</a></li> <!-- Lien vers la page de réservations -->
-                <li><a href="commandes.html">Commandes</a></li> <!-- Lien vers la page de commandes -->
-                <li><a href="clients.html">Clients</a></li> <!-- Lien vers la page des clients -->
-                <li><a href="rapports.html">Rapports</a></li> <!-- Lien vers la page des rapports (pour avoir les listes) -->
+                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="reservations.html">Réservations</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="rapports.html">Rapports</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Conteneur principal pour le contenu de la page d'accueil -->
-    <div class="container" id="home-content">
-        <h1>Bienvenue !! (cool kids only)</h1> <!-- Titre principal -->
-       
+    <div class="container">
+        <h1>Rapport</h1>
+        <h2>Liste des réservations</h2>
+        <div id="reservations-info"></div>
+        <h2>Liste des commandes</h2>
+        <div id="commandes-info"></div>
+        <h2>Liste des nouveaux clients</h2>
+        <div id="clients-info"></div>
     </div>
-    <img src="/images/guy-holding-dumbbell-hand-close-up-44200758.png" alt="un gars hyper fort comme moi" > <!-- Ajout de l'image -->
-
-    <!-- Pied de page -->
     <footer>
-        <p>&copy; 2024 Gym. Tous droits réservés.</p> <!-- Message de droits réservés -->
+        <p>&copy; 2024 Gym Inc. Tous droits réservés.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="../javascript/script.js"></script>
 </body>
-
 </html>

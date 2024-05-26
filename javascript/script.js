@@ -1,111 +1,165 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const reservationForm = document.getElementById('reservation-form');
-    const orderForm = document.getElementById('order-form');
-    const clientForm = document.getElementById('client-form');
+    const formulaireReservation = document.getElementById('reservation-form');
+    const formulaireCommande = document.getElementById('order-form');
+    const formulaireClient = document.getElementById('client-form');
 
-    if (reservationForm) {
-        reservationForm.addEventListener('submit', handleReservationSubmit);
+    if (formulaireReservation) {
+        formulaireReservation.addEventListener('submit', gererSoumissionReservation);
     }
 
-    if (orderForm) {
-        orderForm.addEventListener('submit', handleOrderSubmit);
+    if (formulaireCommande) {
+        formulaireCommande.addEventListener('submit', gererSoumissionCommande);
     }
 
-    if (clientForm) {
-        clientForm.addEventListener('submit', handleClientSubmit);
+    if (formulaireClient) {
+        formulaireClient.addEventListener('submit', gererSoumissionClient);
     }
 
     if (document.getElementById('reservations-info') || document.getElementById('commandes-info') || document.getElementById('clients-info')) {
-        displayReports();
+        afficherRapports();
     }
 });
 
-function handleReservationSubmit(event) {
+async function gererSoumissionReservation(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const reservation = {
-        type: 'Réservation',
-        name: formData.get('name'),
-        date: formData.get('date'),
-        time: formData.get('time')
+        nom: formData.get('name'),
+        date_reservation: formData.get('date'),
+        heure: formData.get('time')
     };
-    logSubmission(reservation);
+
+    try {
+        const response = await fetch('http://localhost:8080/ords/scott/api/reservations/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reservation)
+        });
+
+        if (response.ok) {
+            afficherRapports();
+        } else {
+            console.error('Erreur lors de la soumission de la réservation:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la soumission de la réservation:', error);
+    }
+
     event.target.reset();
 }
 
-function handleOrderSubmit(event) {
+async function gererSoumissionCommande(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const order = {
-        type: 'Commande',
-        product: formData.get('product'),
-        quantity: formData.get('quantity')
+    const commande = {
+        produit: formData.get('product'),
+        quantite: formData.get('quantity')
     };
-    logSubmission(order);
+
+    try {
+        const response = await fetch('http://localhost:8080/ords/scott/api/commandes/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commande)
+        });
+
+        if (response.ok) {
+            afficherRapports();
+        } else {
+            console.error('Erreur lors de la soumission de la commande:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la soumission de la commande:', error);
+    }
+
     event.target.reset();
 }
 
-function handleClientSubmit(event) {
+async function gererSoumissionClient(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const client = {
-        type: 'Client',
         id: formData.get('id'),
         nom: formData.get('nom'),
         prenom: formData.get('prenom'),
         email: formData.get('email'),
         adresse: formData.get('adresse')
     };
-    logSubmission(client);
+
+    try {
+        const response = await fetch('http://localhost:8080/ords/scott/api/clients/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(client)
+        });
+
+        if (response.ok) {
+            afficherRapports();
+        } else {
+            console.error('Erreur lors de la soumission du client:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la soumission du client:', error);
+    }
+
     event.target.reset();
 }
 
-function logSubmission(submission) {
-    let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
-    submissions.push(submission);
-    localStorage.setItem('submissions', JSON.stringify(submissions));
-}
+async function afficherRapports() {
+    const sectionReservations = document.getElementById('reservations-info');
+    const sectionCommandes = document.getElementById('commandes-info');
+    const sectionClients = document.getElementById('clients-info');
 
-function displayReports() {
-    const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
-    const reservationSection = document.getElementById('reservations-info');
-    const orderSection = document.getElementById('commandes-info');
-    const clientSection = document.getElementById('clients-info');
+    try {
+        const [reponseReservations, reponseCommandes, reponseClients] = await Promise.all([
+            fetch('http://localhost:8080/ords/scott/api/reservations/'),
+            fetch('http://localhost:8080/ords/scott/api/commandes/'),
+            fetch('http://localhost:8080/ords/scott/api/clients/')
+        ]);
 
-    const reservations = submissions.filter(sub => sub.type === 'Réservation');
-    const orders = submissions.filter(sub => sub.type === 'Commande');
-    const clients = submissions.filter(sub => sub.type === 'Client');
+        const [reservations, commandes, clients] = await Promise.all([
+            reponseReservations.json(),
+            reponseCommandes.json(),
+            reponseClients.json()
+        ]);
 
-    if (reservationSection) {
-        reservationSection.innerHTML = reservations.length ? reservations.map(res => `
-            <div class="report-item">
-                <span>Nom: ${res.name}</span>
-                <span>Date: ${res.date}</span>
-                <span>Heure: ${res.time}</span>
-            </div>
-        `).join('') : '<p>Aucune réservation pour l\'instant.</p>';
-    }
+        if (sectionReservations) {
+            sectionReservations.innerHTML = reservations.items.length ? reservations.items.map(res => `
+                <div class="report-item">
+                    <span>Nom: ${res.nom}</span>
+                    <span>Date: ${res.date_reservation}</span>
+                    <span>Heure: ${res.heure}</span>
+                </div>
+            `).join('') : "<p>Aucune réservation pour l'instant.</p>";
+        }
 
-    if (orderSection) {
-        orderSection.innerHTML = orders.length ? orders.map(order => `
-            <div class="report-item">
-                <span>Produit: ${order.product}</span>
-                <span>Quantité: ${order.quantity}</span>
-            </div>
-        `).join('') : '<p>Aucune commande pour l\'instant.</p>';
-    }
+        if (sectionCommandes) {
+            sectionCommandes.innerHTML = commandes.items.length ? commandes.items.map(commande => `
+                <div class="report-item">
+                    <span>Produit: ${commande.produit}</span>
+                    <span>Quantité: ${commande.quantite}</span>
+                </div>
+            `).join('') : "<p>Aucune commande pour l'instant.</p>";
+        }
 
-    if (clientSection) {
-        clientSection.innerHTML = clients.length ? clients.map(client => `
-            <div class="report-item">
-                <span>ID: ${client.id}</span>
-                <span>Nom: ${client.nom}</span>
-                <span>Prénom: ${client.prenom}</span>
-                <span>Email: ${client.email}</span>
-                <span>Adresse: ${client.adresse}</span>
-            </div>
-        `).join('') : '<p>Aucun nouveau client pour l\'instant.</p>';
+        if (sectionClients) {
+            sectionClients.innerHTML = clients.items.length ? clients.items.map(client => `
+                <div class="report-item">
+                    <span>ID: ${client.id}</span>
+                    <span>Nom: ${client.nom}</span>
+                    <span>Prénom: ${client.prenom}</span>
+                    <span>Email: ${client.email}</span>
+                    <span>Adresse: ${client.adresse}</span>
+                </div>
+            `).join('') : "<p>Aucun nouveau client pour l'instant.</p>";
+        }
+    } catch (error) {
+        console.error('Erreur lors de la récupération des rapports:', error);
     }
 }
