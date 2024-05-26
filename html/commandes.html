@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commandes</title>
-    <link rel="stylesheet" href="/css/organisation.css"> <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="../css/organisation.css"> <!-- Lien vers le fichier CSS -->
 </head>
-
 <body>
-    <!-- En-tête avec navigation -->
     <header>
         <nav>
             <ul>
@@ -21,27 +18,19 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Conteneur pour les commandes -->
     <div class="container">
-        <h1>Passer une commande</h1> <!-- Titre principal -->
-
-        <!-- Formulaire pour passer une commande -->
+        <h1>Passer une commande</h1>
         <form id="order-form">
-            <label for="product">Produit:</label> <!-- Nom du produit -->
+            <label for="product">Produit:</label>
             <input type="text" id="product" name="product" required>
-
-            <label for="quantity">Quantité:</label> <!-- Quantité du produit -->
+            <label for="quantity">Quantité:</label>
             <input type="number" id="quantity" name="quantity" required>
-
-            <button type="submit">Commander</button> <!-- Bouton pour envoyer le formulaire -->
+            <button type="submit">Commander</button>
         </form>
     </div>
-
-    <!-- Pied de page -->
     <footer>
         <p>&copy; 2024 Gym. Tous droits réservés.</p>
     </footer>
+    <script src="../javascript/script.js"></script>
 </body>
-
 </html>

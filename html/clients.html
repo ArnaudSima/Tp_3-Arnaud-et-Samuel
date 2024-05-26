@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
-    <link rel="stylesheet" href="/css/organisation.css"> <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="../css/organisation.css"> <!-- Lien vers le fichier CSS -->
 </head>
-
 <body>
-    <!-- En-tête avec navigation -->
     <header>
         <nav>
             <ul>
@@ -21,36 +18,25 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Conteneur pour gérer les clients -->
     <div class="container">
-        <h1>Ajouter des clients</h1> <!-- Titre principal -->
-
-        <!-- Formulaire pour ajouter un client -->
+        <h1>Ajouter des clients</h1>
         <form id="client-form">
-            <label for="id">ID:</label> <!-- Identifiant du client -->
+            <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
-
-            <label for="nom">Nom:</label> <!-- Nom du client -->
+            <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
-
-            <label for="prenom">Prénom:</label> <!-- Prénom du client -->
+            <label for="prenom">Prénom:</label>
             <input type="text" id="prenom" name="prenom" required>
-
-            <label for="email">Email:</label> <!-- Adresse email du client -->
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
-            <label for="adresse">Adresse:</label> <!-- Adresse postale du client -->
+            <label for="adresse">Adresse:</label>
             <input type="text" id="adresse" name="adresse" required>
-
-            <button type="submit">Ajouter</button> <!-- Bouton pour envoyer le formulaire -->
+            <button type="submit">Ajouter</button>
         </form>
     </div>
-
-    <!-- Pied de page -->
     <footer>
         <p>&copy; 2024 Gym. Tous droits réservés.</p>
     </footer>
+    <script src="../javascript/script.js"></script>
 </body>
-
 </html>
